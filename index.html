@@ -3,9 +3,12 @@
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" href="index.css">
   <script src="three.min.js"></script>
   <script src="vanta.net.min.js"></script>
+
   <script src="components/content-display/content-display.js" type="module"></script>
+  <script src="components/nav-button/nav-button.js" type="module"></script>
 </head>
 
 <body>
@@ -40,6 +43,24 @@
       spacing: 17.00
     })
   </script>
+
+  <ul>
+    <li>
+      <nav-button href="foo">
+        <p slot="label">About</p>
+      </nav-button>
+    </li>
+    <li>
+      <nav-button>
+        <p slot="label">Projects</p>
+      </nav-button>
+    </li>
+    <li>
+      <nav-button>
+        <p slot="label">Contact</p>
+      </nav-button>
+    </li>
+  </ul>
   <content-display></content-display>
 </body>
 

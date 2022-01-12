@@ -4,7 +4,6 @@ div {
   height: 80%;
   background: rgba(17, 19, 49, 0.9);
   margin: 0 auto;
-  margin-top: 3rem;
   box-shadow: rgb(0, 0, 22) 1px 1px 5px;
   border-radius: 0 0 10px 10px;
 }

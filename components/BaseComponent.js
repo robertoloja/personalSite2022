@@ -6,7 +6,12 @@ export class BaseComponent extends HTMLElement {
     // Apply HTML template
     this.fetchTemplate()
       .then(templateText => {
-        document.body.insertAdjacentHTML('beforebegin', templateText.replace('<template>', '<template id="' + this.hyphenatedClassName() + '">'))
+        if (!document.getElementById(this.hyphenatedClassName())) {
+          const newTemplate = templateText.replace('<template>', '<template id="' + this.hyphenatedClassName() + '">')
+          let newElement = (new DOMParser()).parseFromString(newTemplate, 'text/html');
+          newElement = newElement.querySelector('#' + this.hyphenatedClassName())
+          document.body.insertAdjacentElement('beforebegin', newElement)
+        }
       })
       .then(() => {
         const template = document.getElementById(this.hyphenatedClassName()).content;
