@@ -1,34 +1,46 @@
 <html>
-<script src="three.min.js"></script>
-<script src="vanta.net.min.js"></script>
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <script src="three.min.js"></script>
+  <script src="vanta.net.min.js"></script>
+  <script src="components/content-display/content-display.js" type="module"></script>
+</head>
+
 <body>
-<div id="foo"></div>
-<style>
-  body {
-    overflow: hidden;
-  }
-  #foo {
-    height: 120%;
-    width: 120%;
-    padding: -10px;
-    margin: -50px;
-  }
-</style>
-<script>
-VANTA.NET({
-  el: "#foo",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  color: 0x2d4a63,
-  backgroundColor: 0x111329,
-  points: 9.00,
-  spacing: 17.00
-})
-</script>
+  <div id="foo">
+  </div>
+  <style>
+    #foo {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+    VANTA.NET({
+      el: "#foo",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x2d4a63,
+      backgroundColor: 0x111329,
+      points: 9.00,
+      spacing: 17.00
+    })
+  </script>
+  <content-display></content-display>
 </body>
+
 </html>
