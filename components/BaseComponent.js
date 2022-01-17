@@ -6,25 +6,33 @@ export class BaseComponent extends HTMLElement {
      * no side-effects. 
      */
 
+    this.attachShadow({ mode: "open" })
+
+    if (this.constructor.id == null) this.constructor.id = 0;
+
+    this.id = this.hyphenatedClassName() + this.constructor.id++
+
+    // Apply external styles to the shadow dom
+    const linkElem = document.createElement('link');
+    linkElem.setAttribute('rel', 'stylesheet');
+    linkElem.setAttribute('href', 'components/' +
+      this.hyphenatedClassName() + '/' + this.hyphenatedClassName() + '.css');
+    this.shadowRoot.appendChild(linkElem);
+
+
     // Apply HTML template
     this.fetchTemplate()
       .then(templateText => {
         if (!document.getElementById(this.hyphenatedClassName())) {
-          document.body.insertAdjacentElement('afterbegin', this.parseHtmlIntoDomElement(templateText))
+          document.body.insertAdjacentElement('beforebegin', this.parseHtmlIntoDomElement(templateText))
         }
 
         const template = document.getElementById(this.hyphenatedClassName()).content;
-        this.attachShadow({ mode: "open" }).appendChild(template.cloneNode(true));
-
-        // Apply external styles to the shadow dom
-        const linkElem = document.createElement('link');
-        linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'components/' +
-          this.hyphenatedClassName() + '/' + this.hyphenatedClassName() + '.css');
-        this.shadowRoot.appendChild(linkElem);
-        console.log('shadowRoot created')
-      });
-    console.log('end of parent constructor')
+        this.shadowRoot.appendChild(template.cloneNode(true));
+      })
+      .then(() => {
+        this.templateLoaded()
+      })
   }
 
   parseHtmlIntoDomElement(text) {
@@ -36,14 +44,6 @@ export class BaseComponent extends HTMLElement {
     const template = newElement.querySelector('template')
     template.id = this.hyphenatedClassName()
 
-    /*
-    if (template.innerHTML) {
-      let children = (new DOMParser()).parseFromString(template.innerHTML, 'text/html').body.children
-
-      for (let child of children) {
-        template.appendChild(child)
-      }
-    }*/
     return template
   }
 
