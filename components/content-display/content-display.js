@@ -6,6 +6,7 @@ export class ContentDisplay extends BaseComponent {
   }
 
   templateLoaded() {
+    console.log(this.attributes)
   }
 }
 
