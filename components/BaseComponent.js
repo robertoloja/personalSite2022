@@ -1,11 +1,6 @@
 export class BaseComponent extends HTMLElement {
   constructor() {
     super();
-    /**
-     * TODO: Remove all async stuff from constructor. This should be a pure function with
-     * no side-effects. 
-     */
-
     this.attachShadow({ mode: "open" })
 
     if (this.constructor.id == null) this.constructor.id = 0;
@@ -19,8 +14,7 @@ export class BaseComponent extends HTMLElement {
       this.hyphenatedClassName() + '/' + this.hyphenatedClassName() + '.css');
     this.shadowRoot.appendChild(linkElem);
 
-
-    // Apply HTML template
+    // Apply HTML template, then call the templateLoaded method
     this.fetchTemplate()
       .then(templateText => {
         if (!document.getElementById(this.hyphenatedClassName())) {
@@ -70,5 +64,13 @@ export class BaseComponent extends HTMLElement {
      */
     return this.constructor.name
       .match(/[A-Z][a-z]+/g).map(x => x.toLowerCase()).join("-");
+  }
+
+  templateLoaded() {
+    /**
+     * Overwrite this method in the child classes. This is called once
+     * HTML template and CSS styles are loaded onto the component.
+     */
+    console.warn("Overwrite " + this.constructor.name + ".templatedLoaded()")
   }
 }

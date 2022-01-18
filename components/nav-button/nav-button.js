@@ -6,6 +6,7 @@ export class NavButton extends BaseComponent {
   }
 
   templateLoaded() {
+    this.shadowRoot.querySelector('a').href = 'google.com'
     console.log(this.shadowRoot.querySelector('a'))
   }
 }
