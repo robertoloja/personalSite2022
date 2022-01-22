@@ -1,8 +1,8 @@
 export class BaseComponent extends HTMLElement {
   constructor() {
     super();
+    this.onclick = this.onClick
     this.attachShadow({ mode: "open" })
-
     if (this.constructor.id == null) this.constructor.id = 0;
 
     this.id = this.hyphenatedClassName() + this.constructor.id++
@@ -72,5 +72,9 @@ export class BaseComponent extends HTMLElement {
      * HTML template and CSS styles are loaded onto the component.
      */
     console.warn("Overwrite " + this.constructor.name + ".templatedLoaded()")
+  }
+
+  onClick() {
+    console.warn("Overwrite " + this.constructor.name + ".onClick()")
   }
 }

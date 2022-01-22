@@ -7,6 +7,10 @@ export class NavButton extends BaseComponent {
 
   templateLoaded() {
   }
+
+  onClick() {
+    console.log("foo")
+  }
 }
 
 customElements.define('nav-button', NavButton);

@@ -5,7 +5,9 @@ div {
   min-height: 5rem;
   background: rgba(17, 19, 49, 0.9);
   margin: 0 auto;
-  box-shadow: rgb(0, 0, 22) 1px 1px 5px;
-  border-radius: 0 0 10px 10px;
+  box-shadow: -3px 0 3px -3px black,
+              0 3px 3px -3px black,
+              3px 0 3px -3px black;
+  border-radius: 5px;
   padding: 1rem;
 }
