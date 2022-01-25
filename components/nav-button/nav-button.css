@@ -1,8 +1,8 @@
 div {
   color: black;
-  padding: 1px 10px;
+  padding: 0.8rem 10px;
   margin: 0 0.4rem;
-  background: rgba(17, 19, 49, 0.9);
+  background: rgba(11, 13, 41, 0.9);
   box-shadow: -3px 0 3px -3px black,
               3px 0 3px -3px black;
   border-radius: 5px 5px 0 0;
@@ -12,4 +12,8 @@ a {
   font-family: 'Courier New', Courier, monospace;
   font-weight: 800;
   color: darkcyan;
+}
+
+div.selected {
+  background: rgba(17, 19, 49, 0.9);
 }

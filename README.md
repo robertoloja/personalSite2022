@@ -4,3 +4,7 @@
 2. querySelector not working in shadowRoot of components
     - because DOMParser doesn't walk down the tree, and only parses the first layer
     - solution is to recurse down, parsing each element.innerHTML and attaching it to the element
+
+
+## run
+use 'npx lite-server' for refresh on file changes.

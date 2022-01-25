@@ -6,7 +6,6 @@ export class ContentDisplay extends BaseComponent {
   }
 
   templateLoaded() {
-    console.log(this.shadowRoot.querySelector('slot'))
   }
 }
 

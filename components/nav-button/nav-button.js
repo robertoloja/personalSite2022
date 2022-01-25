@@ -6,10 +6,16 @@ export class NavButton extends BaseComponent {
   }
 
   templateLoaded() {
+    if (this.attributes.href) {
+      this.shadowRoot.querySelector('a').href = this.attributes.href.value
+    }
+
+    if ("selected" in this.attributes) {
+      this.shadowRoot.querySelector('div').classList.add('selected')
+    }
   }
 
   onClick() {
-    console.log("foo")
   }
 }
 
